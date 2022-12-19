@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
+import studentRoutes from './routes/student.js'
 
 // initialise express
 const app = express();
@@ -12,6 +13,10 @@ app.use(bodyParser.json({ limit: "20mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "20mb", extended: true }));
 // setup cross origin resourses
 app.use(cors());
+
+
+// app.use to connect path to our application =>path for student routes and studentRouts
+app.use('/students' ,studentRoutes);
 
 //Creation of Database with Atlas MongoDb
 //Copy connection String from MongoDb
@@ -32,7 +37,7 @@ mongoose
   // .then()  callback if connection is true which listens to PORT
   .then(() =>
     app.listen(PORT, () => {
-      console.log(`Connection is extablished , running on port ${PORT}`);
+      console.log(`<><><><><><><><><><><><>Connection is extablished , running on port ${PORT}<><><><><><><><>`);
     })
   )
   // .catch(if false)
@@ -42,3 +47,6 @@ mongoose
 
 //to avoid warnings and start server
 mongoose.set("strictQuery", false);
+
+
+// 
