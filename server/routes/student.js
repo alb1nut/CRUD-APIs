@@ -1,6 +1,6 @@
 import express from 'express';
-import { getStudents } from '../controllers/student.js';
-
+import { getStudents,createStudent } from '../controllers/student.js';
+import student from '../models/student.js'
 //initialise express router
 
 const router = express.Router();
@@ -8,6 +8,8 @@ const router = express.Router();
 //create routes
 //get route =>path and callback function
 router.get('/', getStudents);
+router.post('/', createStudent);
+
 
 
 //export router
